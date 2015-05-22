@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Aquariums:</h1>
+
+{% if aquarium_list %}
+    <ul>
+    {% for a in aquarium_list %}
+        <li><a href="{% url 'aquariums:detail' a.id %}">{{ a.name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No aquariums have been entered.</p>
+{% endif %}
+
+<a href="{% url 'aquariums:new' %}">Add a new Aquarium</a>
+
+{% endblock %}

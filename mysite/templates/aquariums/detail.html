@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Aquarium Detail{% endblock %}
+
+{% block content %}
+
+<h1>{{ aquarium.name }}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<table class="table table-striped table-bordered table-condensed table-hover">
+<caption>Trend for {{ aquarium.name }}</caption>
+<thead><tr><th  scope="col" style="text-align: center;">Date</th><th  scope="col" style="text-align: center;">pH</th><th scope="col" style="text-align: center;">Ammonia</th><th scope="col" style="text-align: center;">Nitrite</th><th scope="col" style="text-align: center;">Nitrate</th><th scope="col" style="text-align: center;">Temperature</th><th style="text-align: center;">Note</th></tr></head>
+<tbody>
+{% for analysis in aquarium.analysis_set.all %}
+<tr><td scope="row">{{ analysis.analysis_date }}</td><td>{{ analysis.ph }}</td><td>{{ analysis.ammonia }}</td><td>{{ analysis.nitrite }}</td><td>{{ analysis.nitrate }}</td><td>{{ analysis.temp }}</td><td>{{ analysis.note }}</td></tr>
+{% endfor %}
+</tbody>
+</table>
+
+<ul>
+<li><a href="{% url 'aquariums:analysis' aquarium.id %}">Add a new Test for this tank</a></li>
+<li><a href="{% url 'aquariums:fish' aquarium.id %}">Add a Fish for this tank</a> </br></li>
+</ul>
+
+{% endblock %}

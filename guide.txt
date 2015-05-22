@@ -1,0 +1,24 @@
+#create the project aquarium:
+python C:\Python27\Lib\site-packages\django\bin\django-admin.py startproject aquarium
+#create the app
+python manage.py startapp aquariums
+#verify schema:
+python manage.py sql aquariums
+
+#cd to working directory:
+cd Documents\Dev\django\mysite
+cd Documents\Dev\django\insurance
+
+
+#update the db schema:
+python manage.py syncdb
+
+
+
+#run the project:
+python manage.py runserver 0.0.0.0:8001
+
+python manage.py runserver 192.168.1.2:8001
+
+http://localhost:8001
+
